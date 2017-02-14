@@ -5,6 +5,7 @@
  */
 package trekantbestemmelse;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -15,20 +16,26 @@ public class TrekantBestemmelse {
 
     static Scanner scan = new Scanner(System.in);
 
-    static int a = 0;
-    static int b = 0;
-    static int c = 0;
+    private static int a, b, c;
 
     public static void main(String[] args) {
 
-        System.out.println("Enter value for 'a'");
-        a = scan.nextInt();
+        try {
 
-        System.out.println("Enter value for 'b'");
-        b = scan.nextInt();
+            System.out.println("Enter value for 'a'");
 
-        System.out.println("Enter value for 'c'");
-        c = scan.nextInt();
+            a = scan.nextInt();
+
+            System.out.println("Enter value for 'b'");
+            b = scan.nextInt();
+
+            System.out.println("Enter value for 'c'");
+            c = scan.nextInt();
+
+        } catch (InputMismatchException | NumberFormatException e) {
+
+            System.out.println("Error! You cannot insert symbols, only Integers!");
+        }
 
         if (a < b + c && b < a + c && c < a + b) {
 
@@ -47,12 +54,4 @@ public class TrekantBestemmelse {
         }
 
     }
-
 }
- 
-
-// Tjek om ddet er en trekant overhovedet først. 
-// Lav try catch med SOUT, for at se om inputene er integers som ønsket. 
-// Tjek om det trekant, beregn output, også output. 
-// JaCoCoverage
-// Switchcases maybe ????
